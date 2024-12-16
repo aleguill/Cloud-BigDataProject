@@ -6,7 +6,7 @@ def main():
   spark = SparkSession.builder.appName("ETL and ML Job").getOrCreate()
 
   # Load raw data from Cloud Storage
-  raw_data = spark.read.json("gs://your-bucket-name/raw/traffic_data.json")    #CA,BIAR BUCKET NAME
+  raw_data = spark.read.json("gs://grupo12project/raw/traffic_data.json")
 
   # Transform data
   clean_data = raw_data.select("id", "lat", "lon", "tags", "timestamp").filter(raw_data-tags.isNotNull())
@@ -20,11 +20,11 @@ def main():
   lr_model = lr.fit(ml_data)
 
   # Save model to Cloud Storage
-  model_path = "gs://your-bucket-name/models/traffic_congestion_model"   #CAMBIAR BUCKET NAME
+  model_path = "gs://grupo12project/models/traffic_congestion_model"
   lr_model.write().overwrite().save(model_path)
 
   # Write processed data back to Cloud Storage
-  clean_data.write.csv("gs://your-bucket-name/processed/cleaned_data.csv", header = True)   #CAMBIAR BUCKET NAME
+  clean_data.write.csv("gs://grupo12project/processed/cleaned_data.csv", header = True)
 
   spark.stop()
 
