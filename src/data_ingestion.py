@@ -11,6 +11,7 @@ def fetch_data():
 def upload_to_gcs(data, bucket_name, destination_blob):
   storage_client = storage.Client()
   bucket = storage_client.bucket(bucket_name)
+  blob = bucket.blob(destination_blob)
   blob.upload_from_string(data, content_type = "application/json")
 
 def main(request):
