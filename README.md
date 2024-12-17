@@ -4,7 +4,7 @@ Urban centers face significant challenges in managing traffic flow and ensuring 
 
 2. *NEED FOR BIG DATA AND CLOUD*
 
-- Big Data : analyzing large-scale traffic signal an sign data across Madrid generates substantial datasets, which require distributed storage and processing.
+- Big Data : analyzing large-scale traffic signal and sign data across Madrid generates substantial datasets, which require distributed storage and processing.
   
 - Cloud : Google Cloud offers scalable storage (Cloud Storage), distributed processing (Dataproc), and automated workflows (Cloud Functions) to handle complex Big Data workloads.
 
@@ -15,7 +15,7 @@ Urban centers face significant challenges in managing traffic flow and ensuring 
 - Source : data collected from Overpass API (OpenStreetMap), which provides geospatial data on traffic 
   signals and signs.
   
-- Acquisition : queries fetch nodes and ways tagged as highway, traffic_signlas or traffic_sign within the 
+- Acquisition : queries fetch nodes and ways tagged as highway, traffic_signals or traffic_sign within the 
   bounding box of the Community of Madrid.
 
 - Description
@@ -42,7 +42,7 @@ Urban centers face significant challenges in managing traffic flow and ensuring 
       | Region : us-central1
     > Visualization : generated as an interactive HTML file using Folium. 
 
-5. *SOFTWARE DESING*
+5. *SOFTWARE DESIGN*
 
 - Architecture
     > Data ingestion : a Cloud Function fetches traffic signal and sign data using Overpass API and stores 
@@ -85,7 +85,7 @@ Urban centers face significant challenges in managing traffic flow and ensuring 
 7. *PERFORMANCE EVALUATION*
 
 - Scalability tests
-    > Run of Spark jobs with varyig node counts (e.g. 2,4,6)
+    > Run of Spark jobs with varying node counts (e.g. 2,4,6)
     > Measurement of  execution times and analysis of speedup
       | 2 workers : ~30 seconds
       | 4 workers : ~29 seconds
@@ -109,12 +109,12 @@ Urban centers face significant challenges in managing traffic flow and ensuring 
 - Goals achieved
     > Successfully identified high-risk urban zones in Madrid based on traffic infrastructure.
     > Generated an interactive heatmap for actionable insights.
-    > Opmitmized data processing using Google Cloud and PySpark.
+    > Optimized data processing using Google Cloud and PySpark.
 
 - Improvements suggested : explore real-time streaming pipelines using Dataflow.
 
 - Lessons learned 
-    > Determining the optimal number of clusters requieres careful tuning.
+    > Determining the optimal number of clusters requires careful tuning.
     > Processing nested JSON data efficiently is key to performance.
 
 - Future work
