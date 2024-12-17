@@ -3,21 +3,21 @@ import requests
 from google.cloud import storage
 
 def fetch_data():
-    """Obtención de los datos desde la API de tráfico."""
+    """Data fetch through Overpass API"""
     url = "http://overpass-api.de/api/interpreter?data=[out:json];node[highway=traffic_signals](40.10,-4.50,41.10,-3.20);out;"
     response = requests.get(url)
     response.raise_for_status()
     return response.json()
 
 def upload_to_gcs(data, bucket_name, destination_blob):
-    """Carga de los datos a un bucket de Google Cloud Storage."""
+    """Data upload to GCS"""
     storage_client = storage.Client()
     bucket = storage_client.bucket(bucket_name)
     blob = bucket.blob(destination_blob)
     blob.upload_from_string(data, content_type="application/json")
 
 def main(request):
-    """Función principal para Google Cloud Functions."""
+    """Main fucntion for Google Cloud Functions."""
     try:
         data = fetch_data()
         bucket_name = "grupo12project"
